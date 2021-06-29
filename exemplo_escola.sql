@@ -113,9 +113,6 @@ INSERT INTO `escola`.`Disciplina` (`idDisciplina`, `nome`, `Turma_idTurma`, `Pro
 INSERT INTO `escola`.`Disciplina` (`idDisciplina`, `nome`, `Turma_idTurma`, `Professor_idProfessor`) VALUES (5, 'Filosofia', 1, 2);
 INSERT INTO `escola`.`Disciplina` (`idDisciplina`, `nome`, `Turma_idTurma`, `Professor_idProfessor`) VALUES (6, 'Ciências', 1, 1);
 
-    
-SELECT * from `aluno`;
-
 /* Consultar alunos da segunda série*/
 select matricula, nome, email, cpf, telefone from aluno
 where Turma_idTurma = 2;
@@ -142,3 +139,8 @@ and boletim.notaMatematica > 8;
 select notaPortugues, count(notaPortugues) from boletim
 group by notaPortugues 
 order by notaPortugues;
+
+/* Consultar que professor leciona cada disciplina*/
+select professor.nome as 'professor', disciplina.nome as 'disciplina' from professor join disciplina
+on professor.idProfessor = disciplina.Professor_idProfessor
+order by professor.nome;
